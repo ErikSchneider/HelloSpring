@@ -1,9 +1,5 @@
 <html>
 <body>
-{{#person}}
-{{name}} is from {{city}} and is {{age}} years old.
-{{/person}}
-
 {{^user}}
 <form action="/login" method="post">
     <input type="text" name="username" placeholder="Enter your name">
@@ -13,6 +9,13 @@
 
 {{#user}}
 Hello, {{username}}!
+<form action="logout" method="post">
+    <button type="submit">Logout</button>
+</form>
 {{/user}}
+<br>
+{{#person}}
+{{name}} is from {{city}} and is {{age}} years old.
+{{/person}}
 </body>
 </html>
