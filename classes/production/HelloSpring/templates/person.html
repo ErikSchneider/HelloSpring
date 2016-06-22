@@ -1,9 +1,5 @@
 <html>
 <body>
-{{#person}}
-{{name}} is from {{city}} and is {{age}} years old.
-{{/person}}
-
 {{^user}}
 <form action="/login" method="post">
     <input type="text" name="username" placeholder="Enter your name">
@@ -13,6 +9,30 @@
 
 {{#user}}
 Hello, {{username}}!
+<form action="logout" method="post">
+    <button type="submit">Logout</button>
+</form>
 {{/user}}
+<br>
+{{#person}}
+{{name}} is from {{city}} and is {{age}} years old.
+{{/person}}
+<script src="jquery-3.0.0.js"></script>
+<script>
+    var person = {
+        name: "Bob",
+        city: "Pittsburgh",
+        age: 30
+    };
+
+    $.post(
+    {
+        method: "POST",
+        contentType: "application/json",
+        url: "/person.json",
+        data:JSON.stringify(person)
+    }
+    );
+</script>
 </body>
 </html>
